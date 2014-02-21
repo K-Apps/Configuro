@@ -1,20 +1,22 @@
-#Podfile
+# sPodfile
 
-xcodeproj 'Configuro/Configuro.xcodeproj'
+workspace 'Configuro.xcworkspace'
+xcodeproj 'GUI/GUI.xcodeproj'
 
-# Select the appropriate platform below
-# Specify the minimum supported iOS version (or later) required by Kiwi
-# platform :ios, '7.0'
-platform :osx, '10.9'
-
-# Add Kiwi as an exclusive dependency for the RPNTests target
-# target :RPNTests, :exclusive => true do
-#    pod 'Kiwi'
-# end
-
-# If you're using Xcode 5 with a brand new project
-# (XCTest based instead of OCUnit based) use this instead:
-target :ConfiguroTests, :exclusive => true do
-   pod 'Kiwi/XCTest'
+target 'GUI', :exclusive => true do
+	platform :osx, '10.9'
+	xcodeproj 'GUI/GUI.xcodeproj'
+	# XCTest based
+	target :GUITests, :exclusive => true do
+   		pod 'Kiwi/XCTest'
+	end
 end
 
+target 'Model', :exclusive => true do
+	platform :osx, '10.9'
+	xcodeproj 'Model/Model.xcodeproj'
+	# XCTest based
+	target :ModelTests, :exclusive => true do
+   		pod 'Kiwi/XCTest'
+	end
+end
